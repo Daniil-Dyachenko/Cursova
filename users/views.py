@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from users.forms import UserLoginForm
 from users.forms import UserRegistrationForm
 from users.forms import ProfileForm
+from baskets.models import Basket
 
 def login(request):
     if request.method == 'POST':
@@ -19,7 +20,6 @@ def login(request):
             if user:
                 auth.login(request,user)
                 messages.success(request,f"{username}, Ви успішно ввійшли до свого аккаунту")
-
                 direct_page = request.POST.get('next', None)
                 if direct_page and direct_page != reverse('user:logout'):
                     return HttpResponseRedirect(request.POST.get('next'))
