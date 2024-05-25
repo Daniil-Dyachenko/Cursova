@@ -1,0 +1,15 @@
+from django.contrib import admin
+
+from sushi.models import Categories
+from sushi.models import Products
+
+# admin.site.register(Categories)
+# admin.site.register(Products)
+
+@admin.register(Categories)
+class CategoriesAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug' : ('name',)}
+
+@admin.register(Products)
+class ProductsAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug' : ('name',)}
