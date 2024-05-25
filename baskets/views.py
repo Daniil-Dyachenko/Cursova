@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
+from django.http import JsonResponse
+from django.template.loader import render_to_string
 
 from sushi.models import Products
 from baskets.models import Basket
+from baskets.utils import get_user_baskets
 
 def basket_add(request,product_slug):
     product = Products.objects.get(slug=product_slug)
@@ -33,9 +36,28 @@ def basket_add(request,product_slug):
 
 
 def basket_change(request,product_slug):
-    ...
+    basket_id = request.POST.get("basket_id")
+    quantity = request.POST.get("quantity")
+
+    basket = Basket.objects.get(id=basket_id)
+
+    basket.quantity = quantity
+    basket.save()
+    update_quantity = basket.quantity
+
+    basket = get_user_baskets(request)
+    basket_items_html = render_to_string('baskets/includes/included_basket.html', {"baskets":basket}, request=request)
+
+    response_data = {
+        "message": "Кількість змінена",
+        "basket_items_html": basket_items_html,
+        "quantity": update_quantity
+    }
+
+    return JsonResponse(response_data)
 
 def basket_remove(request,basket_id):
     basket = Basket.objects.get(id=basket_id)
     basket.delete()
     return redirect(request.META['HTTP_REFERER'])
+

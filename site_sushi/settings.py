@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "sushi",
     "users",
     "baskets",
+    "customs"
 ]
 
 MIDDLEWARE = [
