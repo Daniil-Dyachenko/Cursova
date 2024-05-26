@@ -1,5 +1,6 @@
 from django.contrib import admin
 from baskets.admin import BasketTabAdmin
+from customs.admin import CustomTabulareAdmin
 
 from users.models import User
 
@@ -10,4 +11,4 @@ class UserAdmin(admin.ModelAdmin):
     list_display = ['username','first_name','last_name','email',]
     search_fields = ['username', 'first_name','last_name','email',]
 
-    inlines = [BasketTabAdmin,]
+    inlines = [BasketTabAdmin, CustomTabulareAdmin, ]

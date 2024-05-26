@@ -2,7 +2,7 @@ import re
 from django import forms
 
 
-class CreateOrderForm(forms.Form):
+class CreateCustomForm(forms.Form):
     first_name = forms.CharField()
     last_name = forms.CharField()
     phone_number = forms.CharField()
@@ -26,7 +26,7 @@ class CreateOrderForm(forms.Form):
         if not data.isdigit():
             raise forms.ValidationError("У вашому номері телефона є букви? Введіть тільки цифри")
 
-        pattern = re.compile(r'^\d{11}$')
+        pattern = re.compile(r'^\d{10}$')
         if not pattern.match(data):
             raise forms.ValidationError("Невірний формат номеру")
 

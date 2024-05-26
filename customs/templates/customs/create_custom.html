@@ -43,7 +43,7 @@
                                                 <label for="id_phone_number" class="form-label">Ваш номер телефону:</label>
                                                 <input type="text" class="form-control" id="id_phone_number" name="phone_number"
                                                        value="{% if form.phone_number.value %}{{ form.phone_number.value }}{% endif %}"
-                                                    placeholder="Формат: +380 XXX XX XX"
+                                                    placeholder="Формат: XXXXXXXXXX"
                                                     required>
                                                     {% if form.phone_number.errors %}
                                                         <div class="alert alert-danger alert-dismissible fade show">{{ form.phone_number.errors }}</div>
@@ -85,6 +85,9 @@
                                                     <input class="form-check-input" type="radio" name="payment_on_get"
                                                         id="id_payment_on_get" value="1">
                                                     <label class="form-check-label" for="id_payment_on_get">Оплата готівкою/картою при отриманні</label>
+                                                    {% if form.paymant_on_get.errors %}
+                                                            <div class="alert alert-danger alert-dismissible fade show">{{ form.payment_on_get.errors }}</div>
+                                                    {% endif %}
                                                 </div>
                                             </div>
                                         </div>
