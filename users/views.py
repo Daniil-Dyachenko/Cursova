@@ -4,11 +4,13 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
+from django.db.models import Prefetch
 
 from users.forms import UserLoginForm
 from users.forms import UserRegistrationForm
 from users.forms import ProfileForm
 from baskets.models import Basket
+from customs.models import Custom, CustomItem
 
 def login(request):
     if request.method == 'POST':
@@ -61,9 +63,18 @@ def profile(request):
             return HttpResponseRedirect(reverse('user:profile'))
     else:
         form = ProfileForm(instance=request.user)
+
+        customs = Custom.objects.filter(user=request.user).prefetch_related(
+            Prefetch(
+                "customitem_set",
+                queryset=CustomItem.objects.select_related("product"),
+            )
+        ).order_by("-id")
+
     context = {
         'title': 'Sushi-Bar - Особистий кабінет',
-        'form': form
+        'form': form,
+        'customs' : customs
     }
     return render(request,'users/profile.html',context)
 

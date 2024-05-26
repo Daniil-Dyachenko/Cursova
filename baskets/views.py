@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from django.http import JsonResponse
 from django.template.loader import render_to_string
+from django.contrib import messages
 
 from sushi.models import Products
 from baskets.models import Basket
@@ -35,26 +36,20 @@ def basket_add(request,product_slug):
     return redirect(request.META['HTTP_REFERER'])
 
 
-def basket_change(request,product_slug):
-    basket_id = request.POST.get("basket_id")
-    quantity = request.POST.get("quantity")
+def basket_change(request):
+    basket_id = request.POST.get('basket_id')
+    basket = get_object_or_404(Basket, id=basket_id)
 
-    basket = Basket.objects.get(id=basket_id)
+    if 'increment' in request.POST:
+        basket.quantity += 1
+    elif 'decrement' in request.POST and basket.quantity > 1:
+        basket.quantity -= 1
 
-    basket.quantity = quantity
     basket.save()
-    update_quantity = basket.quantity
 
-    basket = get_user_baskets(request)
-    basket_items_html = render_to_string('baskets/includes/included_basket.html', {"baskets":basket}, request=request)
+    messages.add_message(request, messages.SUCCESS, 'Кількість товару успішно оновлено.')
 
-    response_data = {
-        "message": "Кількість змінена",
-        "basket_items_html": basket_items_html,
-        "quantity": update_quantity
-    }
-
-    return JsonResponse(response_data)
+    return redirect('user:users_basket')
 
 def basket_remove(request,basket_id):
     basket = Basket.objects.get(id=basket_id)

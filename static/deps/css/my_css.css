@@ -36,3 +36,13 @@ body {
   border-radius: 15px;
   font-size: 0.7rem;
 }
+
+.bg-mybutton {
+  background-color: #0f5132;
+
+}
+
+.bg-blur {
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+}

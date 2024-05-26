@@ -8,14 +8,15 @@
 
 {% block content %}
 <div class="row">
-                        <!-- Форма фильтров -->
+                        <!-- Форма фільтрів -->
                         <div class="dropdown mb-2">
-                            <button class="btn btn-secondary dropdown-toggle btn-dark" type="button" data-bs-toggle="dropdown"
+                            <button class="btn btn-secondary dropdown-toggle btn-success" type="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 Фільтр
                             </button>
 
-                            <form action="{% if request.GET.q %}{% url "catalog:search" %}{% else %}{% url "catalog:index" slug_url %}{% endif %}" method="get" class="dropdown-menu bg-dark" data-bs-theme="dark">
+                            <form action="{% if request.GET.q %}{% url "catalog:search" %}{% else %}{% url "catalog:index" slug_url %}{% endif %}" method="get"
+                                  class="dropdown-menu bg-success bg-gradient" data-bs-theme="dark">
                                 <div class="form-check text-white mx-3">
                                     <input class="form-check-input" type="checkbox" name="on_sale" id="flexCheckDefault" value="on" {% if request.GET.on_sale == 'on' %} checked {% endif %}>
                                     {% if request.GET.q %}
@@ -47,7 +48,7 @@
                                         Від дорогих до дешевих
                                     </label>
                                 </div>
-                                <button type="submit" class="btn btn-primary mx-3 mt-3">Застосувати</button>
+                                <button type="submit" class="btn btn-light mx-3 mt-3">Застосувати</button>
                             </form>
                         </div>
 
@@ -60,9 +61,9 @@
                         {% endif %}
                         {% endif %}
                         {% for product in goods  %}
-                        <!-- Карта товара -->
+                        <!-- Карта товару -->
                         <div class="col-lg-4 col-md-6 p-4">
-                            <div class="card border-primary rounded custom-shadow">
+                            <div class="card rounded custom-shadow">
                                 {% if product.image %}
                                     <img src="{{product.image.url }}" class="card-img-top" alt="{{product.name }}">
                                 {% else %}
@@ -72,7 +73,7 @@
                                     <a href="{% url "catalog:product" product.slug %}">
                                         <p class="card-title">{% autoescape off %}{% if product.headline %}{{ product.headline }}{% else %}{{ product.name }}{% endif %}{% endautoescape %}</p>
                                     </a>
-                                    <p class="card-text">{% autoescape off %}{% if product.bodyline %}{{ product.bodyline|truncatechars:175 }}{% else %}{{ product.description|truncatechars:75}}{% endif %}{% endautoescape %}</p>
+                                    <p class="card-text">{% autoescape off %}{% if product.bodyline %}{{ product.bodyline|truncatechars:175 }}{% else %}{{ product.description|truncatechars:55}}{% endif %}{% endautoescape %}</p>
                                     <p class="product_id">id: {{ product.product_id }}</p>
                                     <div class="d-flex justify-content-between">
 
@@ -95,7 +96,7 @@
                         {% endfor %}
 
                     </div>
-<!-- Пагинация -->
+<!-- Пагінація -->
     {% if goods %}
         <link rel="stylesheet" href="{% static "deps/css/my_footer_css.css" %}">
 <nav aria-label="Page navigation example">
@@ -136,7 +137,7 @@
 
 
 {% block footer %}
-<footer class="py-4 bg-dark">
+<footer class="py-4 bg-success">
     <div class="container">
         <p class="m-0 text-center text-white">Copyright &copy; Cursova Dyachenko Daniil 2024</p>
     </div>

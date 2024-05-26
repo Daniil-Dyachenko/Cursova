@@ -66,6 +66,6 @@ def create_customs(request):
     context = {
         'title': 'Sushi-Bar - Оформлення замовлення',
         'form': form,
-        'customs': True,
+        'custom': True,
     }
     return render(request, 'customs/create_custom.html', context=context)

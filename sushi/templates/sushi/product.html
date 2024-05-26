@@ -7,17 +7,18 @@
 
 {% block content %}
 <div class="container mt-5">
-                        <div class="card mb-4 custom-shadow">
+                        <div class="card mb-4 custom-shadow d-flex ">
                             <div class="row">
-                                <!-- Миниатюры -->
+                                <!-- Мініатюри -->
                                 <div class="col-md-4">
                                     <img src="{{ product.image.url }}"
                                         class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#imageModal1">
                                 </div>
-                                <div class="col-md-4 ">
-                                    <p class="product_id mt-3">id: {{ product.product_id }}</p>
+                                <div class="col-md-8 mt-5 ">
+                                    <h5 class="card-title text-center">{{ product.name }}</h5>
+                                    <p class="card-text text-center">{{ product.description }}</p>
                                 </div>
-                                <!-- Увеличить изображение в модальном окне -->
+                                <!-- Збільшити зображення у модальному вікні -->
                                 <div class="modal fade" id="imageModal1" tabindex="-1"
                                     aria-labelledby="imageModal1Label" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
@@ -35,11 +36,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Описание товара -->
+                            <!-- Опис товару -->
                             <div class="card-body">
-                                <p class="card-text">Ціна: <strong>{{ product.sell_price}} грн</strong></p>
-                                <h5 class="card-title">{{ product.name }}</h5>
-                                <p class="card-text">{{ product.description }}</p>
+                                <p class="product_id mb-0">id: {{ product.product_id }}</p>
+                                <p class="card-text ">Ціна: <strong>{{ product.sell_price}} грн</strong> </p>
                                 <a href="{% url "basket:basket_add" product.slug %}" class="btn btn-dark add-to-cart">Додати до кошику продуктів</a>
                             </div>
                         </div>

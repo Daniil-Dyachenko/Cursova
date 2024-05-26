@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-    <!-- Контент на странице -->
+    <!-- Контент на сторінці -->
                     <div class="row">
                         <div class="container mt-5">
                             <div class="row justify-content-center">
@@ -29,24 +29,9 @@
                                         <button type="submit" class="btn btn-dark btn-block">Вхід</button>
                                     </form>
                                     <div class="mt-3">
-                                        <a href="#">Забули пароль?</a> | <a href="{% url "user:registration" %}">Створити аккаунт</a>
+                                         <a href="{% url "user:registration" %}">Створити аккаунт</a>
                                     </div>
                                     <hr>
-                                    <div class="text-center">
-                                        <p>Авторизація за допомогою:</p>
-                                        <a href="#" class="btn btn-dark">
-                                            <img class="mx-1" src="{% static "deps/icons/google.svg" %}" alt="Catalog Icon" width="16" height="16">
-                                            Google
-                                        </a>
-                                        <a href="#" class="btn btn-dark">
-                                            <img class="mx-1" src="{% static "deps/icons/facebook.svg" %}" alt="Catalog Icon" width="16" height="16">
-                                            Facebook
-                                        </a>
-                                        <a href="#" class="btn btn-dark">
-                                            <img class="mx-1" src="{% static "deps/icons/github.svg" %}" alt="Catalog Icon" width="16" height="16">
-                                            GitHub
-                                        </a>
-                                    </div>
                                 </div>
                             </div>
                         </div>

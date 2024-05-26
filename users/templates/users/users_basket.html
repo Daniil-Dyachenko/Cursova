@@ -4,22 +4,17 @@
 
 {% block content %}
     {% user_baskets request as baskets %}
-                        <!-- Контент на странице -->
+                        <!-- Контент на сторінці -->
                     <div class="row">
                         <div class="container mt-5">
                             <div class="row justify-content-center">
                                 <div class=" bg-white p-4 mb-4 mx-2 rounded custom-shadow">
                                     <h3 class="text-center mb-4">Корзина</h3>
                                     <div class="container" id="cart-items-container">
-                                        <!-- Разметка корзины -->
+                                        <!-- Розмітка корзини -->
                                         {% include "baskets/includes/included_basket.html" %}
-                                        <!-- Закончилась разметка корзины -->
+                                        <!-- Закінчилась розмітка корзини -->
                                     </div>
-                                    {% if baskets %}
-                                        <a class="btn btn-dark" href="../orders/create_order.html">
-                                            Оформить заказ
-                                        </a>
-                                    {% endif %}
                                 </div>
                             </div>
                         </div>
