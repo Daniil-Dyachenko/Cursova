@@ -8,14 +8,14 @@ from sushi.models import Categories
 def index(request):
 
     context = {
-        'title': 'Sushi-bar - Головна',
+        'title': 'Акамедзутсу- Головна',
         'content' : 'Суші-бар Акамедзутсу',
     }
     return render(request,'main/index.html',context )
 
 def about(request):
     context = {
-        'title': 'Sushi-bar - О нас',
+        'title': 'Акамедзутсу - О нас',
         'content': 'О нас',
         "text_on_page": "Ласкаво просимо до суші-бару Акамедзутсу!"
                         "Ми раді вітати вас на нашому веб-сайті, де ви можете легко і зручно замовити найсмачніші суші, роли, макі, нігірі та інші японські делікатеси."
@@ -28,7 +28,7 @@ def about(request):
 
 def info(request):
     context = {
-        'title': 'Sushi-bar - Контакта інформація',
+        'title': 'Акамедзутсу - Контакта інформація',
         'content': 'Номера телефонів',
         "text_on_page": "Наші номера телефонів:  066 511 43 65 / 095 534 34 64 "
     }

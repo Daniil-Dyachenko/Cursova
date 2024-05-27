@@ -17,10 +17,9 @@ class CustomItemTabulareAdmin(admin.TabularInline):
 
 @admin.register(CustomItem)
 class CustomItemAdmin(admin.ModelAdmin):
-    list_display = "custom", "product", "name", "price", "quantity"
+    list_display = "custom","name", "price", "quantity"
     search_fields = (
         "custom",
-        "product",
         "name",
     )
 

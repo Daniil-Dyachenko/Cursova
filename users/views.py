@@ -31,7 +31,7 @@ def login(request):
         form = UserLoginForm()
 
     context = {
-        'title': 'Sushi-Bar - Авторизація',
+        'title': 'Акамедзутсу - Авторизація',
         'form': form
     }
     return render(request,'users/login.html',context)
@@ -43,12 +43,12 @@ def registration(request):
             form.save()
             user = form.instance
             auth.login(request,user)
-            messages.success(request, f"{user.username}, Ви успішно зареєструвались і війшли до свого аккаунту")
+            messages.success(request, f"{user.username}, Ви успішно зареєструвались і увійшли до свого аккаунту")
             return HttpResponseRedirect(reverse('main:index'))
     else:
         form = UserRegistrationForm()
     context = {
-        'title': 'Sushi-Bar - Регістрація',
+        'title': 'Акамедзутсу - Регістрація',
         'form': form
     }
     return render(request,'users/registration.html',context)
@@ -72,7 +72,7 @@ def profile(request):
         ).order_by("-id")
 
     context = {
-        'title': 'Sushi-Bar - Особистий кабінет',
+        'title': 'Акамедзутсу - Особистий кабінет',
         'form': form,
         'customs' : customs
     }

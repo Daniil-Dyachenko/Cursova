@@ -31,7 +31,7 @@ def catalog(request,category_slug=None):
     page = paginator.page(int(page))
 
     context = {
-        'title': 'Sushi-Bar - Каталог',
+        'title': 'Акамедзутсу - Каталог',
         'goods': page,
         'slug_url': category_slug,
     }

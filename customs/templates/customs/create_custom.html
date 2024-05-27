@@ -43,7 +43,7 @@
                                                 <label for="id_phone_number" class="form-label">Ваш номер телефону:</label>
                                                 <input type="text" class="form-control" id="id_phone_number" name="phone_number"
                                                        value="{% if form.phone_number.value %}{{ form.phone_number.value }}{% endif %}"
-                                                    placeholder="Формат: XXXXXXXXXX"
+                                                    placeholder="Формат: 0XXXXXXXXX"
                                                     required>
                                                     {% if form.phone_number.errors %}
                                                         <div class="alert alert-danger alert-dismissible fade show">{{ form.phone_number.errors }}</div>
@@ -65,7 +65,7 @@
                                             </div>
                                             <div class="mb-3" id="deliveryAddressField">
                                                 <label for="id_delivery_address" class="form-label">Ваша адреса
-                                                    доставки*:</label>
+                                                    доставки:</label>
                                                 <textarea class="form-control" id="id_delivery_address"
                                                           value="{% if form.delivery_address.value %}{{ form.delivery_address.value }}{% endif %}"
                                                     name="delivery_address" rows="2"></textarea>

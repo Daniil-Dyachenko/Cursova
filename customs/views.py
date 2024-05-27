@@ -64,7 +64,7 @@ def create_customs(request):
         form = CreateCustomForm(initial=initial)
 
     context = {
-        'title': 'Sushi-Bar - Оформлення замовлення',
+        'title': 'Акамедзутсу - Оформлення замовлення',
         'form': form,
         'custom': True,
     }
