@@ -26,11 +26,8 @@ class TestCreateOrder(TestCase):
             'payment_on_get': '0',
         })
 
-        # Перевіряємо код відповіді
         self.assertEqual(response.status_code, 302)
 
-        # Перевіряємо, чи створено замовлення
         self.assertTrue(Custom.objects.filter(user=self.user).exists())
 
-        # Перевіряємо, чи очищено кошик
         self.assertFalse(Basket.objects.filter(user=self.user).exists())

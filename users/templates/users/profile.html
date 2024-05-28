@@ -1,12 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 {% load baskets_tags %}
-{% block content %}
-    <!-- Контент на сторінці -->
+{% block content %}>
                     <div class="row">
                         <div class="container mt-5">
                             <div class="row">
-                                <!-- Профіль з даними користувача -->
                                 <div class="col-md-5">
                                     <div class=" bg-white p-4 mb-4 mx-2 rounded custom-shadow">
                                         <h3 class="text-center mb-4">Профіль користувача</h3>
@@ -72,24 +70,19 @@
                                         </form>
                                     </div>
                                 </div>
-                                <!-- Корзина -->
                                 {% user_baskets request as baskets %}
                             
                                 <div class="col-md-7">
                                     <div class=" bg-white p-4 mb-4 mx-2 rounded custom-shadow">
                                         <h3 class="text-center mb-4">Корзина</h3>
                                         <div class="container" id="cart-items-container">
-                                            <!-- Розмітка корзини -->
                                             {% include "baskets/includes/included_basket.html" %}
-                                            <!-- Закінчилась розмітка корзини -->
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Оформлені закази -->
                                 <div class="col-md-12">
                                     <div class=" bg-white p-4 mb-4 mx-2 rounded custom-shadow">
                                         <h3 class="text-center mb-4">Мої замовлення</h3>
-                                        <!-- Розмітка заказів -->
                                         <div class="container">
                                             <div class="accordion" id="accordionExample">
                                                     {% for custom in customs %}
@@ -128,7 +121,6 @@
                                                         {% endfor %}
                                                     </div>
                                                 </div>
-                                        <!-- Закінчилась розмітка заказів -->
                                     </div>
                                 </div>
                             </div>

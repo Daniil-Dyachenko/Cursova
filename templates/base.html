@@ -10,9 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static "deps/css/my_css.css" %}">
     <link rel="stylesheet" href="{% static "deps/css/bootstrap/bootstrap.min.css" %}">
-    <!-- Стиль foater для головної сторінки -->
     {% block css %} {% endblock  %}
-    <!-- Favicons for different platforms -->
     <link rel="apple-touch-icon" sizes="180x180" href="{% static "deps/favicon/apple-touch-icon.png" %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static "deps/favicon/favicon-32x32.png" %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static "deps/favicon/favicon-16x16.png" %}">
@@ -80,9 +78,7 @@
     </header>
     <section>
         <div class="container">
-            <!-- Каталог і корзина -->
             <div class="row mt-1 position-fixed z-3 ">
-                <!-- Каталог -->
                 <div class="dropdown mb-2 ">
                     <button class="btn btn-secondary dropdown-toggle btn-success" type="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
@@ -99,19 +95,14 @@
 
                     </ul>
                 </div>
-                <!-- Значок корзини, який визиває модальне вікно корзини -->
                 {% block modal_basket %}{% endblock %}
-                <!-- Закінчилась розмітка модального вікна -->
             </div>
         </div>
-        <!-- Контент -->
         <div class="container">
             <div class="row mt-1">
                 <div class="col-lg-2">
-                    <!-- Пустий блок -->
                 </div>
                 <div class="col-lg-9">
-                    <!-- Контент на сторінці -->
                     {% include "includes/notifications.html" %}
                     {% block content %} {% endblock %}
                 </div>
